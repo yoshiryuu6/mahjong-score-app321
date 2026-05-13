@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.player {
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+button {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+}
