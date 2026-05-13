@@ -8,18 +8,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>麻雀点数管理</h1>
 
-  <h1>麻雀点数管理</h1>
+    <div class="player">
+      <h2>プレイヤーA</h2>
+      <p id="score0">25000</p>
 
-  <div class="player">
-    <h2>プレイヤーA</h2>
+      <button onclick="addScore(0)">+1000</button>
+      <button onclick="minusScore(0)">-1000</button>
+    </div>
 
-    <p id="scoreA">25000</p>
+    <div class="player">
+      <h2>プレイヤーB</h2>
+      <p id="score1">25000</p>
 
-    <button onclick="addScore()">+1000</button>
-    <button onclick="minusScore()">-1000</button>
-  </div>
+      <button onclick="addScore(1)">+1000</button>
+      <button onclick="minusScore(1)">-1000</button>
+    </div>
 
-  <script src="script.js"></script>
+<div class="player">
+  <h2>プレイヤーC</h2>
+  <p id="score2">25000</p>
+
+  <button onclick="addScore(2)">+1000</button>
+  <button onclick="minusScore(2)">-1000</button>
+</div>
+
+<div class="player">
+  <h2>プレイヤーD</h2>
+  <p id="score3">25000</p>
+
+  <button onclick="addScore(3)">+1000</button>
+  <button onclick="minusScore(3)">-1000</button>
+</div>
+  <script src = "script.js"></script>
 </body>
 </html>
