@@ -44,25 +44,96 @@ let dealer = 0;
 let wind = "東";
 let kyoku= 1;
 let honba = 0;
-let dealer = 0;
 let kyotaku = 0;
+let currentWinner = null;
+let selectedType = null;
+let selectedHan = null;
+let selectedFu = null;
+let selectedLoser = null;
 
 function win(playerIndex) {
+  console.log("押された");
 
-  // 親が上がった
-  if (playerIndex === dealer) {
+  /*currentWinner = playerIndex;*/
+  
+  document.getElementById("winMenu")
+  .classList.remove("hidden");
+}
+
+function calcPoint(han, fu) {
+
+  let base = fu * Math.pow(2, han + 2);
+
+  return Math.ceil(base / 100) * 100;
+}
+
+function setType(type) {
+  alert(type);
+  /*selectedType = type;
+
+  if (type === "r") {
+
+    document.getElementById("ronSelect")
+      .classList.remove("hidden");
+
+  } else {
+
+    document.getElementById("ronSelect")
+      .classList.add("hidden");
+  }*/
+}
+
+function setHan(han) {
+  selectedHan = han;
+}
+
+function setFu(fu) {
+  selectedFu = fu;
+}
+
+function setLoser(loser) {
+  selectedLoser = loser;
+}
+
+function confirmWin() {
+
+  let point = calcPoint(selectedHan, selectedFu);
+
+  if (selectedType === "t") {
+
+    // ツモ
+    for (let i = 0; i < 4; i++) {
+
+      if (i !== currentWinner) {
+
+        players[i].score -= point;
+
+        players[currentWinner].score += point;
+      }
+    }
+
+  } else {
+
+    // ロン
+    players[selectedLoser].score -= point * 3;
+
+    players[currentWinner].score += point * 3;
+  }
+
+  // 親処理
+  if (currentWinner === dealer) {
 
     honba++;
+
     kyotaku += 300;
 
   } else {
 
-    // 子が上がった
-
     honba = 0;
-    dealer++;
-    kyoku++;
 
+    dealer++;
+
+    kyoku++;
 
     if (dealer > 3) {
       dealer = 0;
@@ -79,4 +150,7 @@ function win(playerIndex) {
   }
 
   updateScreen();
+
+  document.getElementById("winMenu")
+    .classList.add("hidden");
 }

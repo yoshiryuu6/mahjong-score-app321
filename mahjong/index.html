@@ -44,6 +44,43 @@
 
   <button onclick = "win(3)">D和了 </button>
 </div>
-  <script src = "script.js"></script>
+<div id="winMenu" class="hidden">
+
+  <h2>和了入力</h2>
+
+  <p>和了タイプ</p>
+
+  <button onclick="setType('t')">ツモ</button>
+  <button onclick="setType('r')">ロン</button>
+
+  <p>翻数</p>
+
+  <button onclick="setHan(1)">1翻</button>
+  <button onclick="setHan(2)">2翻</button>
+  <button onclick="setHan(3)">3翻</button>
+  <button onclick="setHan(4)">4翻</button>
+
+  <p>符数</p>
+
+  <button onclick="setFu(20)">20符</button>
+  <button onclick="setFu(30)">30符</button>
+  <button onclick="setFu(40)">40符</button>
+  <button onclick="setFu(50)">50符</button>
+
+  <div id="ronSelect" class="hidden">
+
+    <p>放銃者</p>
+
+    <button onclick="setLoser(0)">A</button>
+    <button onclick="setLoser(1)">B</button>
+    <button onclick="setLoser(2)">C</button>
+    <button onclick="setLoser(3)">D</button>
+
+  </div>
+
+  <button onclick="confirmWin()">確定</button>
+
+</div>
+<script src = "script.js"></script>
 </body>
 </html>
