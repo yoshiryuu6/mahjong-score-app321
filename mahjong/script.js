@@ -29,4 +29,54 @@ function updateScreen() {
 
   document.getElementById("score3").textContent =
     players[3].score;
+  
+  document.getElementById("round").textContent =
+  `${wind}${kyoku}局`;
+
+  document.getElementById("honba").textContent =
+  `${honba}本場`;
+
+  document.getElementById("kyotaku").textContent =
+  `供託: ${kyotaku}`;
+}
+
+let dealer = 0;
+let wind = "東";
+let kyoku= 1;
+let honba = 0;
+let dealer = 0;
+let kyotaku = 0;
+
+function win(playerIndex) {
+
+  // 親が上がった
+  if (playerIndex === dealer) {
+
+    honba++;
+    kyotaku += 300;
+
+  } else {
+
+    // 子が上がった
+
+    honba = 0;
+    dealer++;
+    kyoku++;
+
+
+    if (dealer > 3) {
+      dealer = 0;
+    }
+
+    if (kyoku > 4) {
+
+      kyoku = 1;
+
+      if (wind === "東") {
+        wind = "南";
+      }
+    }
+  }
+
+  updateScreen();
 }
