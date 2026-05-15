@@ -52,9 +52,8 @@ let selectedFu = null;
 let selectedLoser = null;
 
 function win(playerIndex) {
-  console.log("押された");
-
-  /*currentWinner = playerIndex;*/
+  
+  currentWinner = playerIndex;
   
   document.getElementById("winMenu")
   .classList.remove("hidden");
@@ -68,8 +67,8 @@ function calcPoint(han, fu) {
 }
 
 function setType(type) {
-  alert(type);
-  /*selectedType = type;
+
+  selectedType = type;
 
   if (type === "r") {
 
@@ -80,7 +79,7 @@ function setType(type) {
 
     document.getElementById("ronSelect")
       .classList.add("hidden");
-  }*/
+  }
 }
 
 function setHan(han) {
