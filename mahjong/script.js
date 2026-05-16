@@ -61,19 +61,14 @@ function calcPoint(han, fu) {
 function setType(type) {
   selectedType = type;
 
-  // すべてのタイプボタンから selected を外す
-  document.querySelectorAll("#winMenu button").forEach(btn => {
-    if (btn.textContent === "ツモ" || btn.textContent === "ロン") {
-      btn.classList.remove("selected");
-    }
-  });
+  document.getElementById("type-t").classList.remove("selected");
+  document.getElementById("type-r").classList.remove("selected");
 
-  // 押したボタンに selected を付ける
   if (type === "t") {
-    document.querySelector("button[onclick=\"setType('t')\"]").classList.add("selected");
+    document.getElementById("type-t").classList.add("selected");
     document.getElementById("ronSelect").classList.add("hidden");
   } else {
-    document.querySelector("button[onclick=\"setType('r')\"]").classList.add("selected");
+    document.getElementById("type-r").classList.add("selected");
     document.getElementById("ronSelect").classList.remove("hidden");
   }
 }
@@ -81,32 +76,33 @@ function setType(type) {
 function setHan(han) {
   selectedHan = han;
 
-  document.querySelectorAll("button[onclick^='setHan']").forEach(btn => {
-    btn.classList.remove("selected");
+  [1,2,3,4].forEach(h => {
+    document.getElementById(`han-${h}`).classList.remove("selected");
   });
 
-  document.querySelector(`button[onclick="setHan(${han})"]`).classList.add("selected");
+  document.getElementById(`han-${han}`).classList.add("selected");
 }
 
 function setFu(fu) {
   selectedFu = fu;
 
-  document.querySelectorAll("button[onclick^='setFu']").forEach(btn => {
-    btn.classList.remove("selected");
+  [20,30,40,50].forEach(f => {
+    document.getElementById(`fu-${f}`).classList.remove("selected");
   });
 
-  document.querySelector(`button[onclick="setFu(${fu})"]`).classList.add("selected");
+  document.getElementById(`fu-${fu}`).classList.add("selected");
 }
 
 function setLoser(loser) {
   selectedLoser = loser;
 
-  document.querySelectorAll("button[onclick^='setLoser']").forEach(btn => {
-    btn.classList.remove("selected");
+  [0,1,2,3].forEach(i => {
+    document.getElementById(`loser-${i}`).classList.remove("selected");
   });
 
-  document.querySelector(`button[onclick="setLoser(${loser})"]`).classList.add("selected");
+  document.getElementById(`loser-${loser}`).classList.add("selected");
 }
+
 
 function confirmWin() {
 
