@@ -78,17 +78,34 @@ function setType(type) {
   }
 }
 
-
 function setHan(han) {
   selectedHan = han;
+
+  document.querySelectorAll("button[onclick^='setHan']").forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  document.querySelector(`button[onclick="setHan(${han})"]`).classList.add("selected");
 }
 
 function setFu(fu) {
   selectedFu = fu;
+
+  document.querySelectorAll("button[onclick^='setFu']").forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  document.querySelector(`button[onclick="setFu(${fu})"]`).classList.add("selected");
 }
 
 function setLoser(loser) {
   selectedLoser = loser;
+
+  document.querySelectorAll("button[onclick^='setLoser']").forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  document.querySelector(`button[onclick="setLoser(${loser})"]`).classList.add("selected");
 }
 
 function confirmWin() {
