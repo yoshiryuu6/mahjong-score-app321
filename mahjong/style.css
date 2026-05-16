@@ -34,6 +34,10 @@ button {
   width: 250px;
   border-radius: 10px;
   z-index: 9999;
+
+  /* ← ここから追加 */
+  max-height: 80vh;   /* 画面の80%までに制限 */
+  overflow-y: auto;   /* はみ出したら内部スクロール */
 }
 
 .selected {
