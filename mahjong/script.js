@@ -156,11 +156,26 @@ function confirmWin() {
         wind = "南";
       }
     }
+    
   }
 
   updateScreen();
 
-  document.getElementById("winMenu")
-    .classList.add("hidden");
+  document.getElementById("winMenu").classList.add("hidden");
+
+  // 選択状態をリセット
+  selectedType = null;
+  selectedHan = null;
+  selectedFu = null;
+  selectedLoser = null;
+
+  // ボタンの見た目もリセット
+  document.querySelectorAll("#winMenu button").forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+// ロン選択画面を隠す
+document.getElementById("ronSelect").classList.add("hidden");
+
 }
 
