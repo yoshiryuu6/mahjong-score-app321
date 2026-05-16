@@ -18,26 +18,19 @@ function minusScore(index) {
 }
 
 function updateScreen() {
-  document.getElementById("score0").textContent =
-    players[0].score;
+  document.getElementById("score0").textContent = players[0].score;
 
-  document.getElementById("score1").textContent =
-    players[1].score;
+  document.getElementById("score1").textContent = players[1].score;
 
-  document.getElementById("score2").textContent =
-    players[2].score;
+  document.getElementById("score2").textContent = players[2].score;
 
-  document.getElementById("score3").textContent =
-    players[3].score;
+  document.getElementById("score3").textContent = players[3].score;
   
-  document.getElementById("round").textContent =
-  `${wind}${kyoku}局`;
+  document.getElementById("round").textContent = `${wind}${kyoku}局`;
 
-  document.getElementById("honba").textContent =
-  `${honba}本場`;
+  document.getElementById("honba").textContent = `${honba}本場`;
 
-  document.getElementById("kyotaku").textContent =
-  `供託: ${kyotaku}`;
+  document.getElementById("kyotaku").textContent = `供託: ${kyotaku}`;
 }
 
 let dealer = 0;
@@ -55,8 +48,7 @@ function win(playerIndex) {
   
   currentWinner = playerIndex;
   
-  document.getElementById("winMenu")
-  .classList.remove("hidden");
+  document.getElementById("winMenu").classList.remove("hidden");
 }
 
 function calcPoint(han, fu) {
@@ -72,13 +64,11 @@ function setType(type) {
 
   if (type === "r") {
 
-    document.getElementById("ronSelect")
-      .classList.remove("hidden");
+    document.getElementById("ronSelect").classList.remove("hidden");
 
   } else {
 
-    document.getElementById("ronSelect")
-      .classList.add("hidden");
+    document.getElementById("ronSelect").classList.add("hidden");
   }
 }
 
