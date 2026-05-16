@@ -59,18 +59,25 @@ function calcPoint(han, fu) {
 }
 
 function setType(type) {
-
   selectedType = type;
 
-  if (type === "r") {
+  // すべてのタイプボタンから selected を外す
+  document.querySelectorAll("#winMenu button").forEach(btn => {
+    if (btn.textContent === "ツモ" || btn.textContent === "ロン") {
+      btn.classList.remove("selected");
+    }
+  });
 
-    document.getElementById("ronSelect").classList.remove("hidden");
-
-  } else {
-
+  // 押したボタンに selected を付ける
+  if (type === "t") {
+    document.querySelector("button[onclick=\"setType('t')\"]").classList.add("selected");
     document.getElementById("ronSelect").classList.add("hidden");
+  } else {
+    document.querySelector("button[onclick=\"setType('r')\"]").classList.add("selected");
+    document.getElementById("ronSelect").classList.remove("hidden");
   }
 }
+
 
 function setHan(han) {
   selectedHan = han;
@@ -143,3 +150,4 @@ function confirmWin() {
   document.getElementById("winMenu")
     .classList.add("hidden");
 }
+
