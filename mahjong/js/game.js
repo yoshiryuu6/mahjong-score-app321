@@ -38,4 +38,12 @@ export function confirmWin() {
 
   document.getElementById("winMenu")
     .classList.add("hidden");
+  
+  document.querySelectorAll("#winMenu button")
+  .forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  document.getElementById("ronSelect")
+  .classList.add("hidden");
 }
