@@ -12,12 +12,13 @@ import { calcPoint } from "./score.js";
 import { updateScreen } from "./ui.js";
 
 export function confirmWin() {
-
+  
+  let i = 0;
   let point = calcPoint(selectedHan, selectedFu);
 
   if (selectedType === "t") {
 
-    for (let i = 0; i < 4; i++) {
+    for (i; i < 4; i++) {
 
       if (i !== currentWinner) {
         players[i].change -= point;
@@ -34,7 +35,7 @@ export function confirmWin() {
   }
 
   document.getElementById("result").classList.remove("hidden");
-  
+  i = 0;
   players.forEach((player, i) => {
 
     document.getElementById(`finalScore${i}`).textContent = players.score;
