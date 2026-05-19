@@ -22,28 +22,26 @@ export function confirmWin() {
       if (i !== currentWinner) {
         players[i].change -= point;
       } else{
-        players[currentWinner].change += point;
+        players[i].change += point;
       }      
     }
 
   } else {
 
-    players[selectedLoser].change -= point * 3;
+    players[selectedLoser].change -= (point * 3);
 
-    players[currentWinner].change += point * 3;
+    players[currentWinner].change += (point * 3);
   }
 
   document.getElementById("result").classList.remove("hidden");
- 
+  i = 0;
   players.forEach((player, i) => {
 
-    document.getElementById(`finalScore${i}`)
-      .textContent = players.score;
+    document.getElementById(`finalScore${i}`).textContent = players.score;
     document.getElementById(`diff${i}`).textContent = `${players[i].change}`;
   } );
 
-    document.getElementById("winMenu")
-    .classList.add("hidden");
+    document.getElementById("winMenu").classList.add("hidden");
   
   document.querySelectorAll("#winMenu button")
   .forEach(btn => {
@@ -63,7 +61,7 @@ export function Settlement() {
       if (i !== currentWinner) {
         players[i].score += players[i].change;
       } else {
-        players[currentWinner].score += players[i].change;
+        players[i].score += players[i].change;
       }
       
     }
