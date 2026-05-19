@@ -40,7 +40,7 @@ export function confirmWin() {
 
     document.getElementById(`finalScore${i}`)
       .textContent = player.score;
-    document.getElementById(`diff${i}`).textContent = `${player[i].change}`;
+    document.getElementById(`diff${i}`).textContent = `${players[i].change}`;
   } );
 
     document.getElementById("winMenu")
