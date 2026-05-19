@@ -72,7 +72,7 @@ export function Settlement() {
 
     players[selectedLoser].score += players[selectedLoser].change;
 
-    players[currentWinner].score += players[currentWinner].change3;
+    players[currentWinner].score += players[currentWinner].change;
   }
 
   updateScreen();
