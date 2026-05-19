@@ -38,8 +38,8 @@ export function confirmWin() {
   i = 0;
   players.forEach((player, i) => {
 
-    document.getElementById(`finalScore${i}`).textContent = players.score;
-    document.getElementById(`diff${i}`).textContent = `${players[i].change}`;
+    document.getElementById(`finalScore${i}`).textContent = player.score;
+    document.getElementById(`diff${i}`).textContent = player.change;
   } );
 
     document.getElementById("winMenu").classList.add("hidden");
