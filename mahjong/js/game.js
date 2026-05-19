@@ -35,11 +35,11 @@ export function confirmWin() {
   }
 
   document.getElementById("result").classList.remove("hidden");
-
+ 
   players.forEach((player, i) => {
 
     document.getElementById(`finalScore${i}`)
-      .textContent = player.score;
+      .textContent = players.score;
     document.getElementById(`diff${i}`).textContent = `${players[i].change}`;
   } );
 
@@ -71,9 +71,9 @@ export function Settlement() {
 
   } else {
 
-    players[selectedLoser].score += players[i].change * 3;
+    players[selectedLoser].score += players[selectedLoser].change * 3;
 
-    players[currentWinner].score += players[i].change * 3;
+    players[currentWinner].score += players[currentWinner].change * 3;
   }
 
   updateScreen();
