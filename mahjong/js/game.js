@@ -34,7 +34,7 @@ export function confirmWin() {
   }
 
   document.getElementById("result").classList.remove("hidden");
-  i = 0;
+  
   players.forEach((player, i) => {
 
     document.getElementById(`finalScore${i}`).textContent = players.score;
