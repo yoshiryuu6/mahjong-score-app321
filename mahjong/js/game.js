@@ -20,11 +20,10 @@ export function confirmWin() {
     for (let i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
-
         players[i].change -= point;
-
+      } else{
         players[currentWinner].change += point;
-      }
+      }      
     }
 
   } else {
@@ -62,11 +61,11 @@ export function Settlement() {
     for (let i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
-
         players[i].score += players[i].change;
-
+      } else {
         players[currentWinner].score += players[i].change;
       }
+      
     }
 
   } else {
