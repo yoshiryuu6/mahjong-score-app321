@@ -45,3 +45,34 @@ button {
   color: white;
   border: 2px solid #2e7d32;
 }
+
+.settlement-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  width: 300px;
+
+  margin: 10px 0;
+
+  padding: 10px;
+
+  border: 1px solid #ccc;
+}
+
+.name {
+  width: 80px;
+}
+
+.score {
+  width: 80px;
+
+  text-align: center;
+}
+
+.diff {
+  width: 80px;
+
+  text-align: right;
+}

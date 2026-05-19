@@ -1,8 +1,8 @@
 export const players = [
-  { name: "A", score: 25000 },
-  { name: "B", score: 25000 },
-  { name: "C", score: 25000 },
-  { name: "D", score: 25000 }
+  { name: "A", score: 25000 , change: 0},
+  { name: "B", score: 25000 , change: 0},
+  { name: "C", score: 25000 , change: 0},
+  { name: "D", score: 25000 , change: 0}
 ];
 
 export let dealer = 0;

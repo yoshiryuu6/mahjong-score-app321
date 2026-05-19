@@ -21,22 +21,29 @@ export function confirmWin() {
 
       if (i !== currentWinner) {
 
-        players[i].score -= point;
+        players[i].change -= point;
 
-        players[currentWinner].score += point;
+        players[currentWinner].change += point;
       }
     }
 
   } else {
 
-    players[selectedLoser].score -= point * 3;
+    players[selectedLoser].change -= point * 3;
 
-    players[currentWinner].score += point * 3;
+    players[currentWinner].change += point * 3;
   }
 
-  updateScreen();
+  document.getElementById("result").classList.remove("hidden");
 
-  document.getElementById("winMenu")
+  players.forEach((player, i) => {
+
+    document.getElementById(`finalScore${i}`)
+      .textContent = player.score;
+    document.getElementById(`diff${i}`).textContent = `${player[i].change}`;
+  } );
+
+    document.getElementById("winMenu")
     .classList.add("hidden");
   
   document.querySelectorAll("#winMenu button")
@@ -46,4 +53,34 @@ export function confirmWin() {
 
   document.getElementById("ronSelect")
   .classList.add("hidden");
+
+}
+
+export function Settlement() {
+    if (selectedType === "t") {
+
+    for (let i = 0; i < 4; i++) {
+
+      if (i !== currentWinner) {
+
+        players[i].score += players[i].change;
+
+        players[currentWinner].score += players[i].change;
+      }
+    }
+
+  } else {
+
+    players[selectedLoser].score += players[i].change * 3;
+
+    players[currentWinner].score += players[i].change * 3;
+  }
+
+  updateScreen();
+
+   document.getElementById("result").classList.add("hidden");
+ 
+  for (let i = 0; i < 4; i++) {
+    players[i].change = 0;
+  }
 }

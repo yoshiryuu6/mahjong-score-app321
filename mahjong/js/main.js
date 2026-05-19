@@ -8,7 +8,8 @@ import {
 } from "./ui.js";
 
 import {
-  confirmWin
+  confirmWin,
+  Settlement
 } from "./game.js";
 
 window.win = win;
@@ -22,5 +23,7 @@ window.setFu = setFu;
 window.setLoser = setLoser;
 
 window.confirmWin = confirmWin;
+
+window.Settlement = Settlement;
 
 updateScreen();
