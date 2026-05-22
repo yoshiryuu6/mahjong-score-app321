@@ -1,6 +1,9 @@
 import {
-    point
+    point,
+    setPoint
 }from "./state.js";
+
+
 
 export function calcPoint_tP(han, fu) {
    if(han === 1) {
