@@ -37,7 +37,7 @@ export function confirmWin() {
       }
 
     } else {
-      calePoint_tC();
+      calcPoint_tC();
       for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
