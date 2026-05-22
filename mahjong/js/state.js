@@ -4,6 +4,9 @@ export const players = [
   { name: "C", score: 25000 , change: 0},
   { name: "D", score: 25000 , change: 0}
 ];
+export const point = [
+    {winner: 0, loser: 0}
+];
 
 export let dealer = 0;
 export let wind = "東";
@@ -17,6 +20,10 @@ export let selectedHan = null;
 export let selectedFu = null;
 export let selectedLoser = null;
 
+export function setPoint(w, l) {
+    point.winner = w;
+    point.loser = l;
+}
 export function setCurrentWinner(value) {
   currentWinner = value;
 }

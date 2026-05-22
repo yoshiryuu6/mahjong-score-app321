@@ -70,7 +70,7 @@ export function setHan(han) {
 
   setSelectedHan(han);
 
-  [1,2,3,4].forEach(h => {
+  [1,2,3,4,5,6,7,8,9].forEach(h => {
     document.getElementById(`han-${h}`)
       .classList.remove("selected");
   });
@@ -83,7 +83,7 @@ export function setFu(fu) {
 
   setSelectedFu(fu);
 
-  [20,30,40,50].forEach(f => {
+  [20,,25,30,40,50].forEach(f => {
 
     document.getElementById(`fu-${f}`)
       .classList.remove("selected");

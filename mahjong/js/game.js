@@ -1,5 +1,11 @@
 import {
   players,
+  point,
+  kyoku,
+  honba,
+  kyotaku,
+  dealer,
+  wind,
   currentWinner,
   selectedType,
   selectedHan,
@@ -14,25 +20,44 @@ import { updateScreen } from "./ui.js";
 export function confirmWin() {
   
   let i = 0;
-  let point = calcPoint(selectedHan, selectedFu);
-
+  
   if (selectedType === "t") {
-
-    for (i; i < 4; i++) {
+    if(currentwWinner === dealer) {
+      calcPoint_tP();
+      for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
-        players[i].change -= point;
+        players[i].change -= point.child;
       } else{
-        players[i].change += point;
+        players[i].change += point.parent;
       }      
     }
 
+    } else {
+      calePoint_tC();
+      for (i = 0; i < 4; i++) {
+
+      if (i !== currentWinner) {
+        if (i === dealer) {
+            players[i].change -= point.parent;
+        }
+        players[i].change -= point.child;
+      }
+      players[currentWinner].change = point.parent + point.child*2  
+    }
+    }
+
   } else {
-
-    players[selectedLoser].change -= (point * 3);
-
-    players[currentWinner].change += (point * 3);
-  }
+    if(currentWinner === dealer) {
+        calcPoint_rP();
+        players[selectedLoser].change -= point.child;
+        players[currentWinner].change += point.parent;
+    } else {
+        calcPoint_rC();
+        players[selectedLoser].change -= point.child;;
+        players[currentWinner].change += point.child;
+    }
+}
 
   document.getElementById("result").classList.remove("hidden");
   i = 0;
@@ -58,13 +83,7 @@ export function Settlement() {
     if (selectedType === "t") {
 
     for (let i = 0; i < 4; i++) {
-
-      if (i !== currentWinner) {
         players[i].score += players[i].change;
-      } else {
-        players[i].score += players[i].change;
-      }
-      
     }
 
   } else {

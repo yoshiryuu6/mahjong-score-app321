@@ -44,6 +44,7 @@
 
   <button onclick = "win(3)">D和了 </button>
 </div>
+
 <div id="winMenu" class="hidden">
 
   <h2>和了入力</h2>
@@ -59,13 +60,20 @@
   <button id="han-2" onclick="setHan(2)">2翻</button>
   <button id="han-3" onclick="setHan(3)">3翻</button>
   <button id="han-4" onclick="setHan(4)">4翻</button>
+  <button id="han-5" onclick="setHan(5)">満貫</button>
+  <button id="han-6" onclick="setHan(6)">跳満</button>
+  <button id="han-7" onclick="setHan(7)">倍満</button>
+  <button id="han-8" onclick="setHan(8)">三倍満</button>
+  <button id="han-9" onclick="setHan(9)">役満</button>
 
   <p>符数</p>
    
   <button id="fu-20" onclick="setFu(20)">20符</button>
+  <button id="fu-25" onclick="setFu(25)">25符</button>
   <button id="fu-30" onclick="setFu(30)">30符</button>
   <button id="fu-40" onclick="setFu(40)">40符</button>
   <button id="fu-50" onclick="setFu(50)">50符</button>
+
 
   <div id="ronSelect" class="hidden">
 
@@ -80,7 +88,8 @@
 
   <button onclick="confirmWin()">確定</button>
 </div>
-  <div id="result" class="hidden">
+  
+<div id="result" class="hidden">
 
   <h2>清算画面</h2>
 
