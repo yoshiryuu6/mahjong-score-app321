@@ -26,4 +26,6 @@ window.confirmWin = confirmWin;
 
 window.Settlement = Settlement;
 
+
+
 updateScreen();

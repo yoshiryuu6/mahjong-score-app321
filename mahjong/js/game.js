@@ -13,7 +13,10 @@ import {
   selectedLoser
 } from "./state.js";
 
-import { calcPoint } from "./score.js";
+import { calcPoint_tP } from "./score.js";
+import { calcPoint_tC } from "./score.js";
+import { calcPoint_rP } from "./score.js";
+import { calcPoint_rC } from "./score.js";
 
 import { updateScreen } from "./ui.js";
 
