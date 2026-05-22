@@ -43,8 +43,9 @@ export function confirmWin() {
       if (i !== currentWinner) {
         if (i === dealer) {
             players[i].change -= point.parent;
+        } else {
+            players[i].change -= point.child;
         }
-        players[i].change -= point.child;
       }
       players[currentWinner].change = point.parent + point.child*2  
     }
