@@ -26,7 +26,7 @@ export function confirmWin() {
   
   if (selectedType === "t") {
     if(currentWinner === dealer) {
-      calcPoint_tP();
+      calcPoint_tP(selectedHan, selectedFu);
       for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
@@ -37,7 +37,7 @@ export function confirmWin() {
       }
 
     } else {
-      calcPoint_tC();
+      calcPoint_tC(selectedHan, selectedFu);
       for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
@@ -52,11 +52,11 @@ export function confirmWin() {
 
   } else {
     if(currentWinner === dealer) {
-        calcPoint_rP();
+        calcPoint_rP(selectedHan, selectedFu);
         players[selectedLoser].change -= point.child;
         players[currentWinner].change += point.parent;
     } else {
-        calcPoint_rC();
+        calcPoint_rC(selectedHan, selectedFu);
         players[selectedLoser].change -= point.child;;
         players[currentWinner].change += point.child;
     }
