@@ -25,7 +25,7 @@ export function confirmWin() {
   let i = 0;
   
   if (selectedType === "t") {
-    if(currentwWinner === dealer) {
+    if(currentWinner === dealer) {
       calcPoint_tP();
       for (i = 0; i < 4; i++) {
 
@@ -34,7 +34,7 @@ export function confirmWin() {
       } else{
         players[i].change += point.parent;
       }      
-    }
+      }
 
     } else {
       calePoint_tC();
