@@ -36,6 +36,10 @@ export function win(playerIndex) {
   document
     .getElementById("winMenu")
     .classList.remove("hidden");
+  document
+    .getElementById("selecttype")
+    .classList.remove("hidden");
+  
 }
 
 export function setType(type) {
@@ -53,8 +57,10 @@ export function setType(type) {
     document.getElementById("type-t")
       .classList.add("selected");
 
-    document.getElementById("ronSelect")
-      .classList.add("hidden");
+    document
+    .getElementById("selecthan")
+    .classList.remove("hidden");
+  
 
   } else {
 
@@ -68,10 +74,23 @@ export function setType(type) {
 
 export function setHan(han) {
 
+    document
+    .getElementById("selecttype")
+    .classList.add("hidden");
+  
+
   setSelectedHan(han);
+
+  [1,2,3,4,5,6,7,8,9].forEach(h => {
+    document.getElementById(`han-${h}`)
+      .classList.remove("hidden");
+  });
 
   document.getElementById(`han-${han}`)
     .classList.add("selected");
+
+    document.getElementById("selectfu")
+    .classList.remove("hidden");  
 
   if(han === 1) {
     [30,40,50].forEach(f => {
@@ -97,17 +116,33 @@ export function setHan(han) {
       .classList.remove("hidden");
   });
   }
+ 
 }
 
 export function setFu(fu) {
 
+    document
+    .getElementById("selecthan")
+    .classList.add("hidden");
+  
+
   setSelectedFu(fu);
   
+  [20,25,30,40,50].forEach(f => {
+    document.getElementById(`fu-${f}`)
+      .classList.remove("hidden");
+  });
+
   document.getElementById(`fu-${fu}`)
     .classList.add("selected");
 }
 
 export function setLoser(loser) {
+
+    document
+    .getElementById("selecttype")
+    .classList.add("hidden");
+  
 
   setSelectedLoser(loser);
 
@@ -119,4 +154,9 @@ export function setLoser(loser) {
 
   document.getElementById(`loser-${loser}`)
     .classList.add("selected");
+
+  document
+    .getElementById("selecthan")
+    .classList.remove("hidden");
+  
 }
