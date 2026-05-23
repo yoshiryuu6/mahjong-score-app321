@@ -83,7 +83,7 @@ export function setHan(han) {
   document.getElementById(`han-${han}`)
     .classList.add("selected");
 
-    document.getElementById("selectfu")
+  document.getElementById("selectfu")
     .classList.remove("hidden");  
 
   if(han === 1) {

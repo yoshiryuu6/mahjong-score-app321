@@ -73,9 +73,9 @@ export function confirmWin() {
 
   document.getElementById("selecthan").classList.add("hidden");
 
-   document.getElementById("selectfu").classList.add("hidden");
+  document.getElementById("selectfu").classList.add("hidden");
   
-    document.getElementById("winMenu").classList.add("hidden");
+  document.getElementById("winMenu").classList.add("hidden");
   
   document.querySelectorAll("#winMenu button")
   .forEach(btn => {
