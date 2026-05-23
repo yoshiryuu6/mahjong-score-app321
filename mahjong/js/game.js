@@ -71,6 +71,8 @@ export function confirmWin() {
     document.getElementById(`diff${i}`).textContent = player.change;
   } );
 
+   document.getElementById("selectfu").classList.add("hidden");
+  
     document.getElementById("winMenu").classList.add("hidden");
   
   document.querySelectorAll("#winMenu button")

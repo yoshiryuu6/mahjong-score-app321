@@ -75,16 +75,12 @@ export function setType(type) {
 
 export function setHan(han) {
 
-    document
-    .getElementById("selecttype")
-    .classList.add("hidden");
-  
 
   setSelectedHan(han);
 
   [1,2,3,4,5,6,7,8,9].forEach(h => {
     document.getElementById(`han-${h}`)
-      .classList.remove("hidden");
+      .classList.remove("selected");
   });
 
   document.getElementById(`han-${han}`)
@@ -122,16 +118,12 @@ export function setHan(han) {
 
 export function setFu(fu) {
 
-    document
-    .getElementById("selecthan")
-    .classList.add("hidden");
-  
 
   setSelectedFu(fu);
   
   [20,25,30,40,50].forEach(f => {
     document.getElementById(`fu-${f}`)
-      .classList.remove("hidden");
+      .classList.remove("selected");
   });
 
   document.getElementById(`fu-${fu}`)
@@ -139,11 +131,6 @@ export function setFu(fu) {
 }
 
 export function setLoser(loser) {
-
-    document
-    .getElementById("selecttype")
-    .classList.add("hidden");
-  
 
   setSelectedLoser(loser);
 
