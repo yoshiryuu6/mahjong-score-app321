@@ -36,6 +36,7 @@ export function win(playerIndex) {
   document
     .getElementById("winMenu")
     .classList.remove("hidden");
+  
   document
     .getElementById("selecttype")
     .classList.remove("hidden");
