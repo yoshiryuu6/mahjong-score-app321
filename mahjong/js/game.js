@@ -30,11 +30,14 @@ export function confirmWin() {
       for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
-        players[i].change -= point.child;
+        players[i].change -= point.child - kyotaku/3;
       } else{
-        players[i].change += point.parent;
+        players[i].change += point.parent + kyotaku;
       }      
       }
+
+      honba++;
+      kyotaku += 300;
 
     } else {
       calcPoint_tC(selectedHan, selectedFu);
@@ -42,26 +45,41 @@ export function confirmWin() {
 
       if (i !== currentWinner) {
         if (i === dealer) {
-            players[i].change -= point.parent;
+            players[i].change -= point.parent - kyotaku/3;
         } else {
-            players[i].change -= point.child;
+            players[i].change -= point.child + kyotaku;
         }
       }
       players[currentWinner].change = point.parent + point.child*2  
-    }
+      }
+
+      kyoku++;
+      honba=0;
+      kyotaku=0;
     }
 
   } else {
     if(currentWinner === dealer) {
         calcPoint_rP(selectedHan, selectedFu);
-        players[selectedLoser].change -= point.child;
-        players[currentWinner].change += point.parent;
+        players[selectedLoser].change -= point.child - kyotaku;
+        players[currentWinner].change += point.parent + kyotaku;
+
+        honba++;
+        kyotaku+=300;
+
     } else {
         calcPoint_rC(selectedHan, selectedFu);
-        players[selectedLoser].change -= point.child;;
-        players[currentWinner].change += point.child;
+        players[selectedLoser].change -= point.child - kyotaku;
+        players[currentWinner].change += point.child + kyotaku;
+
+        kyoku++;
     }
-}
+  }
+
+  if(kyoku > 4) {
+    kyoku = 1;
+    wind = "南";
+  }
 
   document.getElementById("result").classList.remove("hidden");
   i = 0;
