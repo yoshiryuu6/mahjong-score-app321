@@ -74,7 +74,12 @@ export function confirmWin() {
   document.getElementById("selecthan").classList.add("hidden");
 
   document.getElementById("selectfu").classList.add("hidden");
-  
+
+  [20,25,30,40,50].forEach(f => {
+    document.getElementById(`fu-${f}`)
+      .classList.add("hidden");
+  });
+
   document.getElementById("winMenu").classList.add("hidden");
   
   document.querySelectorAll("#winMenu button")

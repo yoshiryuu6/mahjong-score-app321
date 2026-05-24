@@ -54,6 +54,9 @@ export function setType(type) {
 
     document.getElementById("type-t")
       .classList.add("selected");
+    
+    document.getElementById("ronSelect")
+      .classList.add("hidden");
 
     document
     .getElementById("selecthan")
