@@ -4,6 +4,7 @@ import {
   kyoku,
   honba,
   kyotaku,
+  dealer,
   setCurrentWinner,
   setSelectedType,
   setSelectedHan,
@@ -27,6 +28,17 @@ export function updateScreen() {
 
   document.getElementById("kyotaku").textContent =
     `供託: ${kyotaku}`;
+
+  for (let i = 0; i < 4; i++) {
+    document
+      .getElementById(`player${i}`)
+      .classList.remove("dealer");
+  }
+
+  // 親だけ追加
+  document
+    .getElementById(`player${dealer}`)
+    .classList.add("dealer");
 }
 
 export function win(playerIndex) {
