@@ -111,17 +111,6 @@ h1 {
    プレイヤー位置
 ========================= */
 
-.top {
-  transform: rotate(180deg);
-}
-
-.left {
-  transform: rotate(-90deg);
-}
-
-.right {
-  transform: rotate(90deg);
-}
 
 .bottom {
   border: 3px solid gold;
