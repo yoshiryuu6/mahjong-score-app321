@@ -54,7 +54,7 @@ export function confirmWin() {
             players[i].change -= point.child + kyotaku/3;
         }
       }
-      players[currentWinner].change = point.parent + point.child*2  
+      players[currentWinner].change = point.parent + point.child*2 + kyotaku;
       }
 
       setkyoku();
