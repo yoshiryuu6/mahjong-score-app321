@@ -71,3 +71,11 @@ export function sethonba(value) {
         honba = 0;
     }
 }
+
+export function setdealer() {
+    dealer++;
+    if(dealer > 4) {
+        dealer = 0;
+    }
+
+}

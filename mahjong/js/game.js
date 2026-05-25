@@ -13,6 +13,7 @@ import {
   setkyotaku,
   sethonba,
   setkyoku,
+  setdealer,
   selectedLoser
 } from "./state.js";
 
@@ -33,7 +34,7 @@ export function confirmWin() {
       for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
-        players[i].change -= point.child - kyotaku/3;
+        players[i].change -= point.child + kyotaku/3;
       } else{
         players[i].change += point.parent + kyotaku;
       }      
@@ -48,7 +49,7 @@ export function confirmWin() {
 
       if (i !== currentWinner) {
         if (i === dealer) {
-            players[i].change -= point.parent - kyotaku/3;
+            players[i].change -= point.parent + kyotaku/3;
         } else {
             players[i].change -= point.child + kyotaku;
         }
@@ -59,12 +60,13 @@ export function confirmWin() {
       setkyoku();
       sethonba(0);
       setkyotaku(0);
+      setdealer();
     }
 
   } else {
     if(currentWinner === dealer) {
         calcPoint_rP(selectedHan, selectedFu);
-        players[selectedLoser].change -= point.child - kyotaku;
+        players[selectedLoser].change -= point.child + kyotaku;
         players[currentWinner].change += point.parent + kyotaku;
 
         sethonba(1);
@@ -72,12 +74,13 @@ export function confirmWin() {
 
     } else {
         calcPoint_rC(selectedHan, selectedFu);
-        players[selectedLoser].change -= point.child - kyotaku;
+        players[selectedLoser].change -= point.child + kyotaku;
         players[currentWinner].change += point.child + kyotaku;
 
         sethonba(0);
         setkyotaku(0);
         setkyoku();
+        setdealer();
     }
   }
 
