@@ -74,7 +74,7 @@ export function sethonba(value) {
 
 export function setdealer() {
     dealer++;
-    if(dealer > 4) {
+    if(dealer > 3) {
         dealer = 0;
     }
 
