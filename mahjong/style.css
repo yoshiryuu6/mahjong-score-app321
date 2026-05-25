@@ -269,16 +269,11 @@ button:active {
   transform: translate(-50%, -50%);
 
   z-index: 1000;
-}
 
-#result::before {
-  content: "";
+  background: rgba(20,20,20,0.92);
 
-  position: fixed;
+  border: 2px solid rgba(255,255,255,0.15);
 
-  inset: 0;
-
-  background: rgba(0,0,0,0.5);
-
-  z-index: -1;
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.5);
 }
