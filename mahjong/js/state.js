@@ -43,3 +43,31 @@ export function setSelectedFu(value) {
 export function setSelectedLoser(value) {
   selectedLoser = value;
 }
+
+export function setkyoku() {
+    kyoku++;
+    if(kyoku > 4) {
+        kyoku = 1;
+        setwind();
+    }
+}
+
+export function setkyotaku(value) {
+    if(value === 1) {
+        kyotaku += 300;
+    } else {
+        kyotaku = 0;
+    }
+}
+
+export function setwind() {
+    wind = "南";
+}
+
+export function sethonba(value) {
+    if(value === 1) {
+        honba++;
+    } else {
+        honba = 0;
+    }
+}

@@ -10,6 +10,9 @@ import {
   selectedType,
   selectedHan,
   selectedFu,
+  setkyotaku,
+  sethonba,
+  setkyoku,
   selectedLoser
 } from "./state.js";
 
@@ -36,8 +39,8 @@ export function confirmWin() {
       }      
       }
 
-      honba++;
-      kyotaku += 300;
+      sethonba(1);
+      setkyotaku(1);
 
     } else {
       calcPoint_tC(selectedHan, selectedFu);
@@ -53,9 +56,9 @@ export function confirmWin() {
       players[currentWinner].change = point.parent + point.child*2  
       }
 
-      kyoku++;
-      honba=0;
-      kyotaku=0;
+      setkyoku();
+      sethonba(0);
+      setkyotaku(0);
     }
 
   } else {
@@ -64,23 +67,21 @@ export function confirmWin() {
         players[selectedLoser].change -= point.child - kyotaku;
         players[currentWinner].change += point.parent + kyotaku;
 
-        honba++;
-        kyotaku+=300;
+        sethonba(1);
+        setkyotaku(1);
 
     } else {
         calcPoint_rC(selectedHan, selectedFu);
         players[selectedLoser].change -= point.child - kyotaku;
         players[currentWinner].change += point.child + kyotaku;
 
-        kyoku++;
+        sethonba(0);
+        setkyotaku(0);
+        setkyoku();
     }
   }
 
-  if(kyoku > 4) {
-    kyoku = 1;
-    wind = "南";
-  }
-
+  
   document.getElementById("result").classList.remove("hidden");
   i = 0;
   players.forEach((player, i) => {
