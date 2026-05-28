@@ -62,6 +62,12 @@ export function setType(type) {
   document.getElementById("type-r")
     .classList.remove("selected");
 
+  document.getElementById("selecthan")
+    .classList.add("hidden");
+
+  document.getElementById("selectfu")
+    .classList.add("hidden");
+
   if (type === "t") {
 
     document.getElementById("type-t")
@@ -94,6 +100,11 @@ export function setHan(han) {
     document.getElementById(`han-${h}`)
       .classList.remove("selected");
   });
+
+  [20,25,30,40,50].forEach(f => {
+    document.getElementById(`fu-${f}`)
+      .classList.add("hidden");
+   });
 
   document.getElementById(`han-${han}`)
     .classList.add("selected");
