@@ -9,7 +9,8 @@ import {
 
 import {
   confirmWin,
-  Settlement
+  Settlement,
+  reach
 } from "./game.js";
 
 window.win = win;
@@ -26,6 +27,7 @@ window.confirmWin = confirmWin;
 
 window.Settlement = Settlement;
 
+window.reach = reach;
 
 
 updateScreen();

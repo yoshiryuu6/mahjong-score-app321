@@ -24,6 +24,22 @@ import { calcPoint_rC } from "./score.js";
 
 import { updateScreen } from "./ui.js";
 
+export function reach(index) {
+  
+  const reachBtn = document.getElementById("reachbtn");
+  
+  if(btn.classList.contains("selected")) {
+    btn.classList.remove("selected");
+  } else {
+    btn.classList.add("selected");
+    kyotaku += 1000;
+    players[index].score -= 1000;
+  }
+  
+}
+
+
+
 export function confirmWin() {
   
   let i = 0;
