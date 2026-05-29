@@ -26,7 +26,7 @@ import { updateScreen } from "./ui.js";
 
 export function reach(index) {
   
-  const reachBtn = document.getElementById("reachbtn");
+  const btn = document.getElementById("reachbtn");
   
   if(btn.classList.contains("selected")) {
     btn.classList.remove("selected");
