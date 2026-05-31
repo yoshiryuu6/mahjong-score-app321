@@ -90,7 +90,7 @@ export function confirmWin() {
   } else {
     if(currentWinner === dealer) {
         calcPoint_rP(selectedHan, selectedFu);
-        players[selectedLoser].change -= point.child + kyotaku;
+        players[selectedLoser].change -= point.child + honba*300;
         players[currentWinner].change += point.parent + kyotaku;
         
         if(count > 0) {
@@ -101,7 +101,7 @@ export function confirmWin() {
 
     } else {
         calcPoint_rC(selectedHan, selectedFu);
-        players[selectedLoser].change -= point.child + kyotaku;
+        players[selectedLoser].change -= point.child + honba*300;
         players[currentWinner].change += point.child + kyotaku;
 
         sethonba(0);
