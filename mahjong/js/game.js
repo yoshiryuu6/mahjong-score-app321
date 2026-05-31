@@ -26,16 +26,18 @@ import { updateScreen } from "./ui.js";
 
 export function reach(index) {
   
-  const btn = document.getElementById("reachbtn");
+  const btn = document.getElementById(`reachbtn${index}`);
   
   if(btn.classList.contains("selected")) {
     btn.classList.remove("selected");
+    setkyotaku(3);
+    player[index].score += 1000;
   } else {
     btn.classList.add("selected");
     setkyotaku(2);
     players[index].score -= 1000;
   }
-  
+
   updateScreen();
   
 }
