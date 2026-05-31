@@ -149,7 +149,7 @@ export function Settlement() {
   }
   [0,1,2,3].forEach(i => {
     document.getElementById(`reachbtn${i}`)
-      .classList.add("hidden");
+      .classList.remove("selected");
   });
 
   updateScreen();
