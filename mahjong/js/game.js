@@ -31,7 +31,7 @@ export function reach(index) {
   if(btn.classList.contains("selected")) {
     btn.classList.remove("selected");
     setkyotaku(3);
-    player[index].score += 1000;
+    players[index].score += 1000;
   } else {
     btn.classList.add("selected");
     setkyotaku(2);
