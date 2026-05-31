@@ -62,6 +62,9 @@ export function setkyotaku(value) {
     if(value === 3) {
         kyotaku -= 1000;
     }
+    if(value === 0) {
+        kyotaku = 0;
+    }
 }
 
 export function setwind() {
