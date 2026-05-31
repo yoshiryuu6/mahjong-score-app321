@@ -147,6 +147,10 @@ export function Settlement() {
 
     players[currentWinner].score += players[currentWinner].change;
   }
+  [0,1,2,3].forEach(i => {
+    document.getElementById(`reachbtn${f}`)
+      .classList.add("hidden");
+  });
 
   updateScreen();
 
