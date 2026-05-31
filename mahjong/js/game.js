@@ -54,7 +54,7 @@ export function confirmWin() {
       for (i = 0; i < 4; i++) {
 
       if (i !== currentWinner) {
-        players[i].change -= point.child + kyotaku/3;
+        players[i].change -= point.child + honba*100;
       } else{
         players[i].change += point.parent + kyotaku;
       }      
@@ -69,9 +69,9 @@ export function confirmWin() {
 
       if (i !== currentWinner) {
         if (i === dealer) {
-            players[i].change -= point.parent + kyotaku/3;
+            players[i].change -= point.parent + honba*100;
         } else {
-            players[i].change -= point.child + kyotaku/3;
+            players[i].change -= point.child + honba*100;
         }
       }
       }
