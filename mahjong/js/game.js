@@ -32,9 +32,11 @@ export function reach(index) {
     btn.classList.remove("selected");
   } else {
     btn.classList.add("selected");
-    kyotaku += 1000;
+    setkyotaku(2);
     players[index].score -= 1000;
   }
+  
+  updateScreen();
   
 }
 
