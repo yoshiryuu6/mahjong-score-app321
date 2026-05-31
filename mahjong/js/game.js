@@ -14,7 +14,8 @@ import {
   sethonba,
   setkyoku,
   setdealer,
-  selectedLoser
+  selectedLoser,
+  reachcount
 } from "./state.js";
 
 import { calcPoint_tP } from "./score.js";
@@ -59,6 +60,9 @@ export function confirmWin() {
         players[i].change += point.parent + kyotaku;
       }      
       }
+      if(count > 0) {
+        setkyotaku(4);
+      }
 
       sethonba(1);
       setkyotaku(1);
@@ -88,7 +92,10 @@ export function confirmWin() {
         calcPoint_rP(selectedHan, selectedFu);
         players[selectedLoser].change -= point.child + kyotaku;
         players[currentWinner].change += point.parent + kyotaku;
-
+        
+        if(count > 0) {
+        setkyotaku(4);
+        }
         sethonba(1);
         setkyotaku(1);
 

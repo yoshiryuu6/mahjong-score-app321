@@ -19,6 +19,7 @@ export let selectedType = null;
 export let selectedHan = null;
 export let selectedFu = null;
 export let selectedLoser = null;
+export let count = null;
 
 export function setPoint(p, c) {
     point.parent = p;
@@ -53,18 +54,27 @@ export function setkyoku() {
 }
 
 export function setkyotaku(value) {
+    
     if(value === 1) {
         kyotaku += 300;
+        count = 0;
     } 
     if(value === 2) {
         kyotaku += 1000;
+        count++;
     }
     if(value === 3) {
         kyotaku -= 1000;
+        count--;
     }
     if(value === 0) {
         kyotaku = 0;
+        count = 0;
     }
+    if(value === 4) {
+        kyotaku -= count * 1000;
+    }
+
 }
 
 export function setwind() {
