@@ -15,7 +15,7 @@ import {
   setkyoku,
   setdealer,
   selectedLoser,
-  reachcount
+  count
 } from "./state.js";
 
 import { calcPoint_tP } from "./score.js";
