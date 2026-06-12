@@ -46,7 +46,7 @@ export function reach(index) {
 
 export function ryukyoku() {
 
-  drawMenu.classList.remove("hidden");
+  document.getElementById("drawMenu").classList.remove("hidden");
   setSelectedType("d");
 
 }
