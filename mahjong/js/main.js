@@ -12,7 +12,7 @@ import {
   Settlement,
   reach,
   ryukyoku,
-  tenpai
+  tempai
 } from "./game.js";
 
 window.win = win;
@@ -33,7 +33,7 @@ window.reach = reach;
 
 window.ryukyoku = ryukyoku;
 
-window.tenpai = tenpai;
+window.tempai = tempai;
 
 
 updateScreen();

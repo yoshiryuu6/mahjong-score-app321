@@ -51,21 +51,21 @@ export function ryukyoku() {
 
 }
 
-let tenpaiplayer;
+let tempaiplayer;
 
-export function tenpai(index) {
+export function tempai(index) {
 
-  const btn = document.getErementById(`tenpaibtn${index}`);
+  const btn = document.getErementById(`tempaibtn${index}`);
   
   if(btn.classList.contains("selected")) {
     
     btn.classList.remove("selected");
-    tenpaiplayer=tenpaiplayer.filter(x => x !== index);
+    tempaiplayer=tempaiplayer.filter(x => x !== index);
   
   } else {
     
     btn.classList.add("selected");
-    tenpaiplayer.push(index);
+    tempaiplayer.push(index);
     
   }
   
@@ -137,10 +137,10 @@ export function confirmWin() {
     }
   } else {
     for(let i = 0; i < 4; i++) {
-      if(tenpaiplayer.includes(i)) {
-        players[i].change += 3000 / tenpaiplayer.length; 
+      if(tempaiplayer.includes(i)) {
+        players[i].change += 3000 / tempaiplayer.length; 
       } else {
-        players[i].change -= 3000/tenpaiplayer.length;
+        players[i].change -= 3000/tempaiplayer.length;
       }
     }
     if(players[dealer].change > 0) {
