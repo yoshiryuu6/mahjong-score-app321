@@ -51,7 +51,7 @@ export function ryukyoku() {
 
 }
 
-let tempaiplayer;
+let tempaiplayer = [];
 
 export function tempai(index) {
 
