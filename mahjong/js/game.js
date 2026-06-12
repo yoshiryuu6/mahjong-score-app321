@@ -8,6 +8,7 @@ import {
   wind,
   currentWinner,
   selectedType,
+  setSelectedType,
   selectedHan,
   selectedFu,
   setkyotaku,

@@ -172,4 +172,3 @@ export function setLoser(loser) {
   
 }
 
-drawBtn.addEventListener("click", ryukyoku);
