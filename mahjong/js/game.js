@@ -211,6 +211,11 @@ export function Settlement() {
       .classList.remove("selected");
   });
 
+  [0,1,2,3].forEach(i => {
+    document.getElementById(`tempaibtn${i}`)
+      .classList.remove("selected");
+  });
+
   updateScreen();
 
    document.getElementById("result").classList.add("hidden");
