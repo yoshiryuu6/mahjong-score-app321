@@ -219,7 +219,7 @@ export function Settlement() {
       .classList.remove("selected");
   });
   
-  tempai.player.length = 0;
+  tempaiplayer.length = 0;
 
 
   updateScreen();
