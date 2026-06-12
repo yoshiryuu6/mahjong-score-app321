@@ -55,7 +55,7 @@ let tempaiplayer;
 
 export function tempai(index) {
 
-  const btn = document.getErementById(`tempaibtn${index}`);
+  const btn = document.getElementById(`tempaibtn${index}`);
   
   if(btn.classList.contains("selected")) {
     
