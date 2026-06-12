@@ -137,11 +137,14 @@ export function confirmWin() {
     }
   } else {
     for(let i = 0; i < 4; i++) {
-      if(tempaiplayer.includes(i)) {
+      if (tempaiplayer.length == 4) {
+        players[i].change = 0;
+      } else if(tempaiplayer.includes(i)) {
         players[i].change += 3000 / tempaiplayer.length; 
       } else {
-        players[i].change -= 3000/tempaiplayer.length;
+        players[i].change -= 3000/(4-tempaiplayer.length);
       }
+      
     }
     if(players[dealer].change > 0) {
       
@@ -215,6 +218,9 @@ export function Settlement() {
     document.getElementById(`tempaibtn${i}`)
       .classList.remove("selected");
   });
+  
+  tempai.player.length = 0;
+
 
   updateScreen();
 
