@@ -338,3 +338,32 @@ button:active {
 
   z-index: -1;
 }
+
+.tempai-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+    margin:20px;
+}
+
+.tempaibtn{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.tempaibtn.selected{
+
+    background:gold;
+
+    font-weight:bold;
+}

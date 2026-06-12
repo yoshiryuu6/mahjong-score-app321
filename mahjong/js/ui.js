@@ -171,3 +171,5 @@ export function setLoser(loser) {
     .classList.remove("hidden");
   
 }
+
+drawBtn.addEventListener("click", ryukyoku);

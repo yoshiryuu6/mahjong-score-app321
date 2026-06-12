@@ -35,6 +35,8 @@
      <p id="honba">0本場</p>
 
      <p id="kyotaku">供託: 0</p>
+
+     <button id="drawBtn" onclck = "ryukyoku()">流局</button>
      </div>
 
     <div id="player3" class="player left">
@@ -133,6 +135,38 @@
   </div>
 
   <button onclick="Settlement()">清算</button>
+
+  <div id="drawMenu" class="hidden">
+
+  <h2>流局</h2>
+
+  <p>聴牌者を選択してください</p>
+
+  <div class="tempai-layout">
+
+    <button class="tempaibtn0" onclick = tenpai(0)>
+      プレイヤーA
+    </button>
+
+    <button class="tempaibtn1" onclick = tenpai(1)>
+      プレイヤーB
+    </button>
+
+    <button class="tempaibtn2" onclick = tenpai(2)>
+      プレイヤーC
+    </button>
+
+    <button class="tempaibtn3" onclick = tenpai(3)>
+      プレイヤーD
+    </button>
+
+  </div>
+
+  <button id="confirmDraw" onclick="confirmWin()">
+    確定
+  </button>
+
+</div>
 
 </div>
 

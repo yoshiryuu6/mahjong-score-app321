@@ -10,7 +10,9 @@ import {
 import {
   confirmWin,
   Settlement,
-  reach
+  reach,
+  ryukyoku,
+  tenpai
 } from "./game.js";
 
 window.win = win;
@@ -28,6 +30,10 @@ window.confirmWin = confirmWin;
 window.Settlement = Settlement;
 
 window.reach = reach;
+
+window.ryukyoku = ryukyoku;
+
+window.tenpai = tenpai;
 
 
 updateScreen();

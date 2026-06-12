@@ -43,7 +43,32 @@ export function reach(index) {
   
 }
 
+export function ryukyoku() {
 
+  drawMenu.classList.remove("hidden");
+  setSelectedType("d");
+
+}
+
+let tenpaiplayer;
+
+export function tenpai(index) {
+
+  const btn = document.getErementById(`tenpaibtn${index}`);
+  
+  if(btn.classList.contains("selected")) {
+    
+    btn.classList.remove("selected");
+    tenpaiplayer=tenpaiplayer.filter(x => x !== index);
+  
+  } else {
+    
+    btn.classList.add("selected");
+    tenpaiplayer.push(index);
+    
+  }
+  
+}
 
 export function confirmWin() {
   
@@ -87,7 +112,7 @@ export function confirmWin() {
       setdealer();
     }
 
-  } else {
+  } else if(selectedType === "r"){
     if(currentWinner === dealer) {
         calcPoint_rP(selectedHan, selectedFu);
         players[selectedLoser].change -= point.child + honba*300;
@@ -109,6 +134,24 @@ export function confirmWin() {
         setkyoku();
         setdealer();
     }
+  } else {
+    for(let i = 0; i < 4; i++) {
+      if(tenpaiplayer.includes(i)) {
+        players[i].change += 3000 / tenpaiplayer.length; 
+      } else {
+        players[i].change -= 3000/tenpaiplayer.length;
+      }
+    }
+    if(players[dealer].change > 0) {
+      
+      sethonba(1);
+      setkyotaku(1);
+    } else {
+      sethonba(1);
+      setkyotaku(1);
+      setkyoku();
+      setdealer();
+    }    
   }
 
   
@@ -139,20 +182,28 @@ export function confirmWin() {
   document.getElementById("ronSelect")
   .classList.add("hidden");
 
+  document.getElementById("drawMenu")
+  .classList.add("hidden");
+
+
 }
 
 export function Settlement() {
-    if (selectedType === "t") {
+  if (selectedType === "t") {
 
     for (let i = 0; i < 4; i++) {
         players[i].score += players[i].change;
     }
 
-  } else {
+  } else if(selectedType === "r") {
 
     players[selectedLoser].score += players[selectedLoser].change;
 
     players[currentWinner].score += players[currentWinner].change;
+  } else {
+    for(let i = 0; i < 4; i++) {
+      players[i].score += players[i].change;
+    }
   }
   [0,1,2,3].forEach(i => {
     document.getElementById(`reachbtn${i}`)
