@@ -339,15 +339,10 @@ button:active {
   z-index: -1;
 }
 
-.tempai-layout{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:10px;
-
-    margin:20px;
+.tempai-layout {
+  width: 420px;
+  max-height: 80vh;
+  margin: 0 auto;
 }
 
 .tempaibtn{
