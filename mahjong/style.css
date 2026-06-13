@@ -392,3 +392,7 @@ button:active {
 
     font-weight:bold;
 }
+
+#confirmDraw {
+  margin-top: 10px;
+}
