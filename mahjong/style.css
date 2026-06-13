@@ -340,9 +340,10 @@ button:active {
 }
 
 .tempai-layout {
-  width: 420px;
-  max-height: 80vh;
-  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .tempaibtn{
