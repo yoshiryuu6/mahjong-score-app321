@@ -151,6 +151,8 @@ export function setFu(fu) {
 
   document.getElementById(`fu-${fu}`)
     .classList.add("selected");
+
+  document.getElementById("confirm").classList.remove("hidden");
 }
 
 export function setLoser(loser) {
