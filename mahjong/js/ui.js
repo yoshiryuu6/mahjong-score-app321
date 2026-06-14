@@ -136,6 +136,12 @@ export function setHan(han) {
       .classList.remove("hidden");
   });
   }
+  if(han >= 5) {
+    document.getElementById("selectfu")
+    .classList.add("hidden");  
+
+    document.getElementById("confirm").classList.remove("hidden");
+  }
  
 }
 
@@ -180,7 +186,6 @@ export function cancel() {
   document.querySelectorAll("#winMenu button")
   .forEach(btn => {
     btn.classList.remove("selected");
-    btn.classList.add("hidden");
   });
 
 
