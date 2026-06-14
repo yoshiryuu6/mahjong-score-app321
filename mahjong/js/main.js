@@ -4,7 +4,8 @@ import {
   setType,
   setHan,
   setFu,
-  setLoser
+  setLoser,
+  cancel
 } from "./ui.js";
 
 import {
@@ -34,6 +35,8 @@ window.reach = reach;
 window.ryukyoku = ryukyoku;
 
 window.tempai = tempai;
+
+window.cancel = cancel;
 
 
 updateScreen();

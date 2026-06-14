@@ -174,3 +174,14 @@ export function setLoser(loser) {
   
 }
 
+export function cancel() {
+  document.getElementById("winMenu").classList.add("hidden");
+  
+  document.querySelectorAll("#winMenu button")
+  .forEach(btn => {
+    btn.classList.remove("selected");
+    btn.classList.add("hidden");
+  });
+
+
+}
