@@ -71,6 +71,17 @@ export function tempai(index) {
   
 }
 
+export function cancelDraw() {
+  document.getElementById("drawMenu").classList.add("hidden");
+
+  [0,1,2,3].forEach(i => {
+    document.getElementById(`tempaibtn${i}`)
+      .classList.remove("selected");
+  });
+
+  tempaiplayer.length = 0;
+}
+
 export function confirmWin() {
   
   let i = 0;

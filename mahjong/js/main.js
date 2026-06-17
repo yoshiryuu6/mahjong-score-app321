@@ -13,7 +13,8 @@ import {
   Settlement,
   reach,
   ryukyoku,
-  tempai
+  tempai,
+  cancelDraw
 } from "./game.js";
 
 window.win = win;
@@ -37,6 +38,8 @@ window.ryukyoku = ryukyoku;
 window.tempai = tempai;
 
 window.cancel = cancel;
+
+window.cancelDraw = cancelDraw;
 
 
 updateScreen();
