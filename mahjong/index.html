@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>麻雀点数管理</title>
 
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <h1>麻雀点数管理</h1>
@@ -168,11 +168,13 @@
 
   </div>
 
-  <button id="confirmDraw" onclick="confirmWin()">
-    確定
-  </button>
+  <div class="draw-actions">
+    <button id="confirmDraw" onclick="confirmWin()">
+      確定
+    </button>
 
-  <button id="cancelDraw" onclick="cancelDraw()">キャンセル</button>
+    <button id="cancelDrawBtn" onclick="cancelDraw()">キャンセル</button>
+  </div>
 
 </div>
 
@@ -181,6 +183,6 @@
 
 
 
-<script type="module" src="./js/main.js"></script>
+<script type="module" src="./js/main.js?v=3"></script>
 </body>
 </html>

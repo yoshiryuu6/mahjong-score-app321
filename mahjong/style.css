@@ -401,14 +401,17 @@ button:active {
     font-weight:bold;
 }
 
-#confirmDraw {
-  margin-top: 10px;
+.draw-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
 }
 
-#cancelDraw {
-  display: block;
-  margin: 18px auto 0;
-  width: fit-content;
+#confirmDraw,
+#cancelDrawBtn {
+  min-width: 120px;
+  margin: 0;
 }
 
 #confirm {
