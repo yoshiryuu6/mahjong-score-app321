@@ -405,7 +405,7 @@ button:active {
   margin-top: 10px;
 }
 
-#drawMenu button[onclick="cancelDraw()"] {
+#cancelDraw {
   display: block;
   margin: 18px auto 0;
   width: fit-content;
