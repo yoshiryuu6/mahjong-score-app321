@@ -327,6 +327,14 @@ button:active {
   font-size: 1rem;
 }
 
+#winMenu button[onclick="cancel()"] {
+  display: block;
+
+  margin: 18px auto 0;
+
+  width: fit-content;
+}
+
 #winMenu::before {
   content: "";
 

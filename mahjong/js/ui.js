@@ -182,6 +182,10 @@ export function setLoser(loser) {
 
 export function cancel() {
   document.getElementById("winMenu").classList.add("hidden");
+  document.getElementById("ronSelect").classList.add("hidden");
+  document.getElementById("selecthan").classList.add("hidden");
+  document.getElementById("selectfu").classList.add("hidden");
+  document.getElementById("confirm").classList.add("hidden");
   
   document.querySelectorAll("#winMenu button")
   .forEach(btn => {
