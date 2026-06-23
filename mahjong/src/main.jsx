@@ -2,11 +2,13 @@ import React, { useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./App.css";
 
-const initialPlayers = [
-  { name: "A", score: 25000, change: 0, reached: false },
-  { name: "B", score: 25000, change: 0, reached: false },
-  { name: "C", score: 25000, change: 0, reached: false },
-  { name: "D", score: 25000, change: 0, reached: false },
+const STARTING_SCORE = 25000;
+
+const defaultPlayers = [
+  { code: "A", seat: "東家", defaultName: "プレイヤーA", score: STARTING_SCORE, change: 0, reached: false },
+  { code: "B", seat: "南家", defaultName: "プレイヤーB", score: STARTING_SCORE, change: 0, reached: false },
+  { code: "C", seat: "西家", defaultName: "プレイヤーC", score: STARTING_SCORE, change: 0, reached: false },
+  { code: "D", seat: "北家", defaultName: "プレイヤーD", score: STARTING_SCORE, change: 0, reached: false },
 ];
 
 const hanOptions = [
@@ -75,6 +77,13 @@ const pointTables = {
   },
 };
 
+function createPlayers(nameInputs = {}) {
+  return defaultPlayers.map((player) => ({
+    ...player,
+    name: nameInputs[player.code]?.trim() || player.defaultName,
+  }));
+}
+
 function getPoint(tableName, han, fu) {
   const table = pointTables[tableName][han];
   const values = Array.isArray(table) ? table : table?.[fu];
@@ -82,11 +91,15 @@ function getPoint(tableName, han, fu) {
 }
 
 function nextRound(kyoku, wind) {
-  if (kyoku < 4) {
-    return { kyoku: kyoku + 1, wind };
+  if (wind === "南" && kyoku === 4) {
+    return { kyoku, wind, gameOver: true };
   }
 
-  return { kyoku: 1, wind: wind === "東" ? "南" : wind };
+  if (kyoku < 4) {
+    return { kyoku: kyoku + 1, wind, gameOver: false };
+  }
+
+  return { kyoku: 1, wind: wind === "東" ? "南" : wind, gameOver: false };
 }
 
 function formatDiff(value) {
@@ -94,7 +107,9 @@ function formatDiff(value) {
 }
 
 function App() {
-  const [players, setPlayers] = useState(initialPlayers);
+  const [isStarted, setIsStarted] = useState(false);
+  const [nameInputs, setNameInputs] = useState({});
+  const [players, setPlayers] = useState(createPlayers());
   const [dealer, setDealer] = useState(0);
   const [wind, setWind] = useState("東");
   const [kyoku, setKyoku] = useState(1);
@@ -104,6 +119,8 @@ function App() {
   const [winMenuOpen, setWinMenuOpen] = useState(false);
   const [drawMenuOpen, setDrawMenuOpen] = useState(false);
   const [resultOpen, setResultOpen] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [pendingGameOver, setPendingGameOver] = useState(false);
   const [currentWinner, setCurrentWinner] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const [selectedHan, setSelectedHan] = useState(null);
@@ -113,21 +130,48 @@ function App() {
 
   const visibleFuOptions = useMemo(() => fuByHan[selectedHan] ?? [], [selectedHan]);
 
+  function startGame(event) {
+    event.preventDefault();
+    setPlayers(createPlayers(nameInputs));
+    setDealer(0);
+    setWind("東");
+    setKyoku(1);
+    setHonba(0);
+    setKyotaku(0);
+    setReachCount(0);
+    setTempaiPlayers([]);
+    setResultOpen(false);
+    setGameOver(false);
+    setPendingGameOver(false);
+    setWinMenuOpen(false);
+    setDrawMenuOpen(false);
+    resetWinInput();
+    setIsStarted(true);
+  }
+
   function resetWinInput() {
     setSelectedType(null);
     setSelectedHan(null);
     setSelectedFu(null);
     setSelectedLoser(null);
+    setCurrentWinner(null);
   }
 
   function rotateDealerAndRound() {
     const next = nextRound(kyoku, wind);
+    if (next.gameOver) {
+      setPendingGameOver(true);
+      return;
+    }
+
     setKyoku(next.kyoku);
     setWind(next.wind);
     setDealer((current) => (current + 1) % 4);
   }
 
   function toggleReach(index) {
+    const wasReached = players[index].reached;
+
     setPlayers((current) =>
       current.map((player, i) => {
         if (i !== index) {
@@ -141,8 +185,8 @@ function App() {
         };
       }),
     );
-    setKyotaku((current) => current + (players[index].reached ? -1000 : 1000));
-    setReachCount((current) => current + (players[index].reached ? -1 : 1));
+    setKyotaku((current) => current + (wasReached ? -1000 : 1000));
+    setReachCount((current) => current + (wasReached ? -1 : 1));
   }
 
   function openWinMenu(index) {
@@ -150,6 +194,7 @@ function App() {
     setWinMenuOpen(true);
     setDrawMenuOpen(false);
     resetWinInput();
+    setCurrentWinner(index);
   }
 
   function selectType(type) {
@@ -263,24 +308,88 @@ function App() {
   }
 
   function settle() {
-    setPlayers((current) =>
-      current.map((player) => ({
+    const settledPlayers = players.map((player) => ({
         ...player,
         score: player.score + player.change,
         change: 0,
         reached: false,
-      })),
-    );
+      }));
+
+    setPlayers(settledPlayers);
     setReachCount(0);
     setTempaiPlayers([]);
     setResultOpen(false);
     resetWinInput();
+
+    if (pendingGameOver) {
+      setPendingGameOver(false);
+      setGameOver(true);
+    }
   }
 
   const canConfirmWin =
     selectedType === "t"
       ? selectedHan && (selectedHan >= 5 || selectedFu)
       : selectedLoser !== null && selectedHan && (selectedHan >= 5 || selectedFu);
+
+  if (!isStarted) {
+    return (
+      <main className="app-shell">
+        <form className="setup-panel" onSubmit={startGame}>
+          <h1>麻雀点数管理</h1>
+          <div className="setup-grid">
+            {defaultPlayers.map((player) => (
+              <label className="name-field" key={player.code}>
+                <span>{player.seat}</span>
+                <input
+                  type="text"
+                  value={nameInputs[player.code] ?? ""}
+                  placeholder={player.defaultName}
+                  maxLength={12}
+                  onChange={(event) =>
+                    setNameInputs((current) => ({
+                      ...current,
+                      [player.code]: event.target.value,
+                    }))
+                  }
+                />
+              </label>
+            ))}
+          </div>
+          <button className="start-button" type="submit">対局開始</button>
+        </form>
+      </main>
+    );
+  }
+
+  if (gameOver) {
+    return (
+      <main className="app-shell">
+        <section className="final-panel">
+          <h1>対局終了</h1>
+          <div className="ranking-list">
+            {[...players]
+              .sort((a, b) => b.score - a.score)
+              .map((player, index) => {
+                const totalDiff = player.score - STARTING_SCORE;
+
+                return (
+                  <div className="ranking-row" key={player.code}>
+                    <span className="rank">{index + 1}位</span>
+                    <span className="ranking-name">{player.name}</span>
+                    <span className="ranking-score">{player.score}</span>
+                    <span className={`ranking-diff ${totalDiff >= 0 ? "plus" : "minus"}`}>
+                      {formatDiff(totalDiff)}
+                    </span>
+                  </div>
+                );
+              })}
+          </div>
+          <button type="button" onClick={() => setIsStarted(false)}>新しい対局へ</button>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="app-shell">
@@ -301,7 +410,7 @@ function App() {
             player={players[1]}
             index={1}
             isDealer={dealer === 1}
-            position="right"
+            position="left"
             onReach={toggleReach}
             onWin={openWinMenu}
           />
@@ -317,7 +426,7 @@ function App() {
             player={players[3]}
             index={3}
             isDealer={dealer === 3}
-            position="left"
+            position="right"
             onReach={toggleReach}
             onWin={openWinMenu}
           />
@@ -348,7 +457,7 @@ function App() {
                 <button
                   className={selectedLoser === i ? "selected" : ""}
                   disabled={i === currentWinner}
-                  key={player.name}
+                  key={player.code}
                   type="button"
                   onClick={() => setSelectedLoser(i)}
                 >
@@ -403,11 +512,11 @@ function App() {
             {players.map((player, i) => (
               <button
                 className={tempaiPlayers.includes(i) ? "selected" : ""}
-                key={player.name}
+                key={player.code}
                 type="button"
                 onClick={() => toggleTempai(i)}
               >
-                プレイヤー{player.name}
+                {player.name}
               </button>
             ))}
           </div>
@@ -422,7 +531,7 @@ function App() {
         <div className="result-panel" role="dialog" aria-modal="true" aria-label="精算画面">
           <h2>精算画面</h2>
           {players.map((player) => (
-            <div className="settlement-row" key={player.name}>
+            <div className="settlement-row" key={player.code}>
               <span className="name">{player.name}</span>
               <span className="score">{player.score}</span>
               <span className={`diff ${player.change >= 0 ? "plus" : "minus"}`}>
@@ -440,8 +549,8 @@ function App() {
 function PlayerPanel({ player, index, isDealer, position, onReach, onWin }) {
   return (
     <div className={`player ${position} ${isDealer ? "dealer" : ""}`}>
-      <div className="tile-mark" aria-hidden="true">{player.name}</div>
-      <h2>プレイヤー{player.name}</h2>
+      <div className="tile-mark" aria-hidden="true">{player.code}</div>
+      <h2>{player.name}</h2>
       <p>{player.score}</p>
       <div className="player-actions">
         <button
@@ -452,7 +561,7 @@ function PlayerPanel({ player, index, isDealer, position, onReach, onWin }) {
           リーチ
         </button>
         <button type="button" onClick={() => onWin(index)}>
-          {player.name}和了
+          和了
         </button>
       </div>
     </div>
